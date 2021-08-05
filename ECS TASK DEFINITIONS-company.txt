@@ -1,0 +1,19 @@
+aws ecs register-task-definition --family 'ECSPOVRayWorkerTask' --container-definitions '[
+        {
+            "name": "ECSPOVRayWorker",
+            "image": "gowtham994433/raytrace01:version01",
+            "cpu": 512,
+            "environment": [
+                {
+                    "name": "AWS_REGION",
+                    "value": "ap-southeast-2"
+                },
+                {
+                    "name": "SQS_QUEUE_URL",
+                    "value": "https://sqs.ap-southeast-2.amazonaws.com/082314080060/ECSPOVRayWorkerQueue"
+                }
+            ],
+            "memory": 512,
+            "essential": true
+        }
+    ]'
